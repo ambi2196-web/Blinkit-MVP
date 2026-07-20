@@ -1,1 +1,83 @@
-[]
+[
+  {
+    "id": "routine-dry-skin-starter",
+    "title": "Dry-skin starter routine",
+    "trigger_tags": ["dry_skin"],
+    "reviewed_by": "Evidence-checked against published research",
+    "steps": [
+      { "step": "cleanser", "catalog_tags": ["dry_skin", "sensitive", "fragrance_free"], "evidence_id": null },
+      { "step": "moisturizer", "catalog_tags": ["dry_skin", "ceramide"], "evidence_id": "ev-ceramides" },
+      { "step": "serum", "catalog_tags": ["hyaluronic_acid"], "evidence_id": "ev-hyaluronic-acid", "optional": true },
+      { "step": "sunscreen", "catalog_tags": ["sun_protection", "dry_skin"], "evidence_id": "ev-spf-photoaging" }
+    ],
+    "skip_candidates": [
+      { "catalog_tags": ["toner", "preference"], "note": "Skipping toner — no strong evidence it adds anything beyond a good cleanser and moisturizer for dry skin." }
+    ]
+  },
+  {
+    "id": "routine-oily-acne-basic",
+    "title": "Oily / acne-prone basics",
+    "trigger_tags": ["oily_skin", "acne_prone"],
+    "reviewed_by": "Evidence-checked against published research",
+    "steps": [
+      { "step": "cleanser", "catalog_tags": ["oily_skin", "acne_prone"], "evidence_id": "ev-salicylic-acid" },
+      { "step": "serum", "catalog_tags": ["niacinamide"], "evidence_id": "ev-niacinamide-sebum" },
+      { "step": "moisturizer", "catalog_tags": ["oily_skin", "lightweight"], "evidence_id": null },
+      { "step": "sunscreen", "catalog_tags": ["sun_protection", "oily_skin"], "evidence_id": "ev-spf-photoaging" }
+    ],
+    "skip_candidates": [
+      { "catalog_tags": ["exfoliating", "preference"], "note": "Skipping a separate exfoliating toner — your salicylic acid cleanser and niacinamide serum already cover exfoliation and oil control." }
+    ]
+  },
+  {
+    "id": "routine-high-protein-veg",
+    "title": "High-protein vegetarian day",
+    "trigger_tags": ["high_protein", "vegetarian_protein"],
+    "reviewed_by": "Evidence-checked against published research",
+    "steps": [
+      { "step": "paneer_or_curd", "catalog_tags": ["vegetarian_protein", "high_protein"], "evidence_id": "ev-protein-per-kg" },
+      { "step": "oats_or_sprouts", "catalog_tags": ["fiber", "vegetarian_protein"], "evidence_id": "ev-fiber" },
+      { "step": "curd", "catalog_tags": ["probiotic", "digestive_health"], "evidence_id": "ev-probiotic-curd" },
+      { "step": "plant_protein_supplement", "catalog_tags": ["vegetarian_protein", "muscle_building"], "evidence_id": "ev-protein-per-kg", "optional": true }
+    ],
+    "skip_candidates": []
+  },
+  {
+    "id": "routine-high-protein-nonveg",
+    "title": "High-protein non-vegetarian day",
+    "trigger_tags": ["high_protein", "non_veg"],
+    "reviewed_by": "Evidence-checked against published research",
+    "steps": [
+      { "step": "eggs", "catalog_tags": ["non_veg", "high_protein"], "evidence_id": "ev-protein-per-kg" },
+      { "step": "whey_protein", "catalog_tags": ["whey", "muscle_building"], "evidence_id": "ev-whey-protein-timing" },
+      { "step": "oats", "catalog_tags": ["fiber"], "evidence_id": "ev-fiber" },
+      { "step": "creatine", "catalog_tags": ["creatine", "muscle_building"], "evidence_id": "ev-creatine", "optional": true }
+    ],
+    "skip_candidates": []
+  },
+  {
+    "id": "routine-beard-grooming-starter",
+    "title": "Beard-grooming starter",
+    "trigger_tags": ["beard_growth", "beard_care"],
+    "reviewed_by": "Evidence-checked against published research",
+    "steps": [
+      { "step": "beard_wash", "catalog_tags": ["beard_care"], "evidence_id": null },
+      { "step": "beard_oil", "catalog_tags": ["beard_growth"], "evidence_id": null },
+      { "step": "trimmer", "catalog_tags": ["trimmer"], "evidence_id": null }
+    ],
+    "skip_candidates": [
+      { "catalog_tags": ["fragrance", "preference"], "note": "Adding a beard-specific perfume is optional — fragrance is personal preference, not a grooming requirement." }
+    ]
+  },
+  {
+    "id": "routine-wind-down-sleep",
+    "title": "Wind-down / sleep routine",
+    "trigger_tags": ["sleep_habit", "wind_down"],
+    "reviewed_by": "Evidence-checked against published research",
+    "steps": [
+      { "step": "night_lamp", "catalog_tags": ["sleep_habit", "warm_light"], "evidence_id": "ev-blue-light-sleep" },
+      { "step": "journal", "catalog_tags": ["journaling_habit"], "evidence_id": "ev-journaling" }
+    ],
+    "skip_candidates": []
+  }
+]

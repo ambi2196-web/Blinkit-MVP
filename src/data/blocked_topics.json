@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "id": "bt-prescription-meds",
+    "keywords": ["prescription", "antibiotic", "accutane", "isotretinoin", "steroid cream", "dosage", "dose of", "how much should i take"],
+    "response": "That's something a doctor or pharmacist needs to weigh in on rather than a shopping app — prescription and dosing questions depend on your medical history. I can suggest some general, non-prescription wellness products if that's helpful instead."
+  },
+  {
+    "id": "bt-medical-conditions",
+    "keywords": ["diagnose", "is this cancer", "eczema treatment", "psoriasis treatment", "diabetes", "thyroid", "std", "sti"],
+    "response": "I'm not able to help with diagnosing or treating a medical condition — that's one for a doctor. I can point you toward general, non-medical wellness products if you'd like."
+  },
+  {
+    "id": "bt-pregnancy",
+    "keywords": ["pregnant", "pregnancy", "breastfeeding", "trying to conceive"],
+    "response": "Pregnancy and breastfeeding change what's safe to use, so that's best worked out with your doctor rather than guessed at here. I can suggest general wellness basics if that's useful, but please check with a professional before starting anything new."
+  },
+  {
+    "id": "bt-minors-skincare",
+    "keywords": ["for my 10 year old", "for my kid", "for my daughter age", "for my son age", "child's skin", "teenager acne prescription"],
+    "response": "Skincare and supplement needs are different for children and teens, and that's best guided by a pediatrician or dermatologist rather than a general routine here."
+  },
+  {
+    "id": "bt-weight-loss-drugs",
+    "keywords": ["ozempic", "semaglutide", "weight loss pill", "fat burner drug", "appetite suppressant"],
+    "response": "Weight-loss medications need medical supervision, so that's a conversation for a doctor rather than something I can recommend here. I can suggest general nutrition or fitness-adjacent products instead if that helps."
+  },
+  {
+    "id": "bt-mental-health",
+    "keywords": ["depression treatment", "anxiety medication", "suicidal", "self harm", "panic attack treatment"],
+    "response": "This sounds like it deserves support from a mental health professional rather than a shopping recommendation. If you're in crisis, please reach out to a local helpline or emergency service. I can suggest some general wind-down and habit-building products if that would help alongside professional support."
+  }
+]

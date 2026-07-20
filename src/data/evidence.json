@@ -1,1 +1,169 @@
-[]
+[
+  {
+    "id": "ev-ceramides",
+    "claim": "Ceramides support skin barrier repair in dry skin",
+    "strength": "strong",
+    "study_count": 2,
+    "plain_summary": "Ceramides are a natural part of the skin's outer barrier. When barrier ceramide content drops, skin loses water faster and feels dry or tight. Topical ceramide-containing moisturizers have been shown in clinical trials to reduce water loss and improve hydration within 2-4 weeks of regular use.",
+    "sources": [
+      { "title": "Clinical significance of the water retention and barrier function-improving capabilities of ceramide-containing formulations: A qualitative review", "journal": "The Journal of Dermatology", "year": 2021, "url": "https://onlinelibrary.wiley.com/doi/10.1111/1346-8138.16175" },
+      { "title": "Clinical evaluation of a topical ceramide lotion on skin hydration and skin barrier in healthy volunteers with dry skin", "journal": "Cosmoderma", "year": 2023, "url": "https://cosmoderma.org/clinical-evaluation-of-a-topical-ceramide-lotion-on-skin-hydration-and-skin-barrier-in-healthy-volunteers-with-dry-skin/" }
+    ],
+    "applies_to_tags": ["dry_skin", "ceramide", "barrier_repair"]
+  },
+  {
+    "id": "ev-niacinamide-sebum",
+    "claim": "Niacinamide reduces excess sebum and helps manage acne-prone skin",
+    "strength": "strong",
+    "study_count": 2,
+    "plain_summary": "Niacinamide has a well-documented sebosuppressive effect, meaning it reduces the amount of oil the skin produces, and it also calms inflammation linked to acne. A split-face randomized trial found a ceramide-and-niacinamide moisturizer improved results when used alongside standard acne treatment.",
+    "sources": [
+      { "title": "The effect of 2% niacinamide on facial sebum production", "journal": "Journal of Cosmetic and Laser Therapy", "year": 2006, "url": "https://www.researchgate.net/publication/7017890_The_effect_of_2_niacinamide_on_facial_sebum_production" },
+      { "title": "Efficacy of ceramides and niacinamide-containing moisturizer versus hydrophilic cream in combination with topical anti-acne treatment in mild to moderate acne vulgaris", "journal": "Journal of Cosmetic Dermatology", "year": 2024, "url": "https://onlinelibrary.wiley.com/doi/10.1111/jocd.16212" }
+    ],
+    "applies_to_tags": ["oily_skin", "acne_prone", "niacinamide"]
+  },
+  {
+    "id": "ev-spf-photoaging",
+    "claim": "Daily broad-spectrum sunscreen use significantly slows visible skin aging",
+    "strength": "strong",
+    "study_count": 1,
+    "plain_summary": "In a randomized trial following adults for 4.5 years, people told to apply broad-spectrum SPF daily showed no detectable increase in skin aging, while the group using sunscreen only when they felt like it showed clear signs of aging. This is one of the best-established findings in dermatology.",
+    "sources": [
+      { "title": "Sunscreen and Prevention of Skin Aging: A Randomized Trial", "journal": "Annals of Internal Medicine", "year": 2013, "url": "https://www.acpjournals.org/doi/10.7326/0003-4819-158-11-201306040-00002" }
+    ],
+    "applies_to_tags": ["sun_protection", "anti_aging"]
+  },
+  {
+    "id": "ev-hyaluronic-acid",
+    "claim": "Topical hyaluronic acid improves skin hydration by drawing in and holding moisture",
+    "strength": "moderate",
+    "study_count": 1,
+    "plain_summary": "Hyaluronic acid can hold many times its weight in water, so applying it topically helps pull moisture into the outer skin layers. A multicenter clinical evaluation found meaningful improvements in hydration with a topical HA serum, though very large HA molecules can struggle to penetrate skin, so formulation matters.",
+    "sources": [
+      { "title": "Multicenter evaluation of a topical hyaluronic acid serum", "journal": "PubMed (Journal of Drugs in Dermatology)", "year": 2022, "url": "https://pubmed.ncbi.nlm.nih.gov/35833366/" }
+    ],
+    "applies_to_tags": ["dry_skin", "hyaluronic_acid"]
+  },
+  {
+    "id": "ev-salicylic-acid",
+    "claim": "Salicylic acid reduces sebum and improves acne-prone skin",
+    "strength": "strong",
+    "study_count": 1,
+    "plain_summary": "Salicylic acid exfoliates inside pores and cuts down excess oil. A 2025 prospective trial found sebum levels dropped by about 24% and skin barrier function improved after 21 days of twice-daily use of a salicylic acid gel.",
+    "sources": [
+      { "title": "Clinical Efficacy of a Salicylic Acid-Containing Gel on Acne Management and Skin Barrier Function: A 21-Day Prospective Study", "journal": "Journal of Cosmetic Dermatology", "year": 2025, "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12274963/" }
+    ],
+    "applies_to_tags": ["acne_prone", "oily_skin", "salicylic_acid"]
+  },
+  {
+    "id": "ev-retinol-antiaging",
+    "claim": "Topical retinol can reduce the appearance of fine lines over time",
+    "strength": "moderate",
+    "study_count": 1,
+    "plain_summary": "Retinol is one of the most studied anti-aging ingredients and has decades of evidence for improving fine lines and skin texture with consistent use over weeks to months. Newer actives have shown comparable or better results in some head-to-head trials, so retinol is a solid, not the only, option.",
+    "sources": [
+      { "title": "Evidence for the Efficacy of Over-the-counter Vitamin A Cosmetic Products in the Improvement of Facial Skin Aging: A Systematic Review", "journal": "The Journal of Clinical and Aesthetic Dermatology", "year": 2024, "url": "https://jcadonline.com/efficacy-of-over-the-counter-vitamin-a/" }
+    ],
+    "applies_to_tags": ["anti_aging", "retinol"]
+  },
+  {
+    "id": "ev-whey-protein-timing",
+    "claim": "Spreading protein intake evenly across meals (not just after workouts) supports muscle protein synthesis",
+    "strength": "strong",
+    "study_count": 1,
+    "plain_summary": "A meta-analysis of 38 studies and 2,800 participants found that distributing protein evenly across roughly four meals a day increased muscle protein synthesis more than concentrating it in one or two meals. Whey is a fast-digesting, complete protein that's well suited to hitting that target.",
+    "sources": [
+      { "title": "The effect of protein timing on muscle strength and hypertrophy: a meta-analysis", "journal": "Journal of the International Society of Sports Nutrition", "year": 2013, "url": "https://link.springer.com/article/10.1186/1550-2783-10-53" }
+    ],
+    "applies_to_tags": ["high_protein", "muscle_building", "whey"]
+  },
+  {
+    "id": "ev-creatine",
+    "claim": "Creatine monohydrate combined with resistance training increases muscle strength",
+    "strength": "strong",
+    "study_count": 1,
+    "plain_summary": "Creatine is one of the most well-studied sports supplements. A 2025 meta-analysis of 23 studies found it significantly increased strength gains from resistance training, generally after more than 12 weeks of consistent use, with a strong long-term safety record.",
+    "sources": [
+      { "title": "Effects of creatine supplementation on muscle strength gains - a meta-analysis and systematic review", "journal": "PeerJ", "year": 2025, "url": "https://peerj.com/articles/20380/" }
+    ],
+    "applies_to_tags": ["muscle_building", "creatine", "workout"]
+  },
+  {
+    "id": "ev-protein-per-kg",
+    "claim": "Higher total daily protein intake supports muscle mass and strength when combined with training",
+    "strength": "strong",
+    "study_count": 1,
+    "plain_summary": "A systematic review and meta-analysis found a clear dose-response relationship between protein intake and gains in muscle mass and function in healthy adults, supporting the common target of roughly 1.6g of protein per kg of bodyweight for people training regularly.",
+    "sources": [
+      { "title": "Systematic review and meta-analysis of protein intake to support muscle mass and function in healthy adults", "journal": "Journal of Cachexia, Sarcopenia and Muscle", "year": 2022, "url": "https://onlinelibrary.wiley.com/doi/10.1002/jcsm.12922" }
+    ],
+    "applies_to_tags": ["high_protein", "muscle_building"]
+  },
+  {
+    "id": "ev-electrolyte-ors",
+    "claim": "Oral rehydration solutions effectively restore fluid and electrolyte balance",
+    "strength": "strong",
+    "study_count": 1,
+    "plain_summary": "Glucose-electrolyte oral rehydration solutions are one of the most validated interventions in medicine for restoring fluids lost to sweating, illness, or heat, working by using glucose to help the gut absorb sodium and water together.",
+    "sources": [
+      { "title": "50 years of oral rehydration therapy: the solution is still simple", "journal": "The Lancet", "year": 2018, "url": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(18)31488-0/abstract" }
+    ],
+    "applies_to_tags": ["hydration", "electrolyte_replacement"]
+  },
+  {
+    "id": "ev-probiotic-curd",
+    "claim": "Fermented dairy like curd supports gut microbiota diversity",
+    "strength": "moderate",
+    "study_count": 2,
+    "plain_summary": "Regular consumption of probiotic-rich fermented milk and curd is linked to higher levels of beneficial gut bacteria like Bifidobacterium, and a meta-analysis found it can improve bowel regularity. Evidence on broader digestive symptom relief is more mixed, so this is a solid but not absolute claim.",
+    "sources": [
+      { "title": "Associations of Probiotic Fermented Milk (PFM) and Yogurt Consumption with Bifidobacterium and Lactobacillus Components of the Gut Microbiota in Healthy Adults", "journal": "Nutrients (PMC)", "year": 2019, "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6470543/" },
+      { "title": "A study on the effect of symbiotic fermented milk products on human gastrointestinal health", "journal": "PMC", "year": 2022, "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9469858/" }
+    ],
+    "applies_to_tags": ["probiotic", "digestive_health"]
+  },
+  {
+    "id": "ev-fiber",
+    "claim": "Higher dietary fiber intake is linked to lower risk of chronic disease and mortality",
+    "strength": "strong",
+    "study_count": 1,
+    "plain_summary": "An umbrella review covering over 17 million people found that higher fiber intake (around 25-29g per day) was linked to meaningfully lower risk of cardiovascular disease, several cancers, and all-cause mortality. Most diets fall well short of this target.",
+    "sources": [
+      { "title": "The impact of dietary fiber consumption on human health: An umbrella review of evidence from 17,155,277 individuals", "journal": "Clinical Nutrition (ScienceDirect)", "year": 2025, "url": "https://www.sciencedirect.com/science/article/abs/pii/S026156142500175X" }
+    ],
+    "applies_to_tags": ["fiber", "general_wellness"]
+  },
+  {
+    "id": "ev-journaling",
+    "claim": "Reflective journaling may reduce stress for some people, though evidence is mixed",
+    "strength": "moderate",
+    "study_count": 2,
+    "plain_summary": "Expressive writing trials show real but inconsistent benefits for stress and mood — a COVID-19-era randomized trial found reduced psychological distress after two weeks of guided writing, but an earlier trial found effects depended heavily on how emotionally expressive the writer already was. This is a reasonable habit to try, not a guaranteed fix.",
+    "sources": [
+      { "title": "Effectiveness of Expressive Writing in the Reduction of Psychological Distress During the COVID-19 Pandemic: A Randomized Controlled Trial", "journal": "Frontiers in Psychology", "year": 2020, "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7683413/" },
+      { "title": "Randomized controlled trial of expressive writing for psychological and physical health: the moderating role of emotional expressivity", "journal": "PubMed (Psychology & Health)", "year": 2013, "url": "https://pubmed.ncbi.nlm.nih.gov/23742666/" }
+    ],
+    "applies_to_tags": ["wind_down", "journaling_habit"]
+  },
+  {
+    "id": "ev-blue-light-sleep",
+    "claim": "Warm, dim evening lighting supports better sleep onset than bright blue-white light",
+    "strength": "moderate",
+    "study_count": 1,
+    "plain_summary": "Evening exposure to blue-enriched light suppresses melatonin and can delay sleep onset, a well-replicated finding across sleep science. Choosing warm-toned, dim lighting in the hour before bed instead of bright white light is a reasonable evidence-backed habit, though no study has tested a specific 'night lamp' product itself.",
+    "sources": [
+      { "title": "Out of the Lab and into the Bathroom: Evening Short-Term Exposure to Conventional Light Suppresses Melatonin and Increases Alertness Perception", "journal": "International Journal of Endocrinology (PMC)", "year": 2013, "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3588003/" }
+    ],
+    "applies_to_tags": ["sleep_habit", "wind_down", "warm_light"]
+  },
+  {
+    "id": "ev-fragrance-preference",
+    "claim": "Fragrance choice is a matter of personal preference, not clinical benefit",
+    "strength": "preference",
+    "study_count": 0,
+    "plain_summary": "There's no health evidence that one fragrance profile or a fragrance-heavy product is better than another for most people — this is purely a personal taste choice. The one evidence-based exception is sensitive or reaction-prone skin, where fragrance-free products reduce the risk of irritation.",
+    "sources": [],
+    "applies_to_tags": ["fragrance", "preference"]
+  }
+]
