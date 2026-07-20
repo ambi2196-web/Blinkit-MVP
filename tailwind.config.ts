@@ -11,6 +11,13 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        blinkit: {
+          yellow: "#F8CB46",
+          green: "#0C831F",
+        },
+      },
+      fontFamily: {
+        sans: ["var(--font-inter)", "Arial", "Helvetica", "sans-serif"],
       },
     },
   },

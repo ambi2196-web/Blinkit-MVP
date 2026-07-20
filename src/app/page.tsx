@@ -1,11 +1,20 @@
+import Header from "@/components/Header";
+import CategoryTiles from "@/components/CategoryTiles";
+import ProductRail from "@/components/ProductRail";
+import { getByCategory, getTopDiscounted } from "@/lib/catalog";
+
 export default function Home() {
+  const hotDeals = getTopDiscounted(10);
+  const freshNeeds = getByCategory("grocery").slice(0, 10);
+  const skincare = getByCategory("personal_care").slice(0, 10);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-4 p-8 text-center">
-      <h1 className="text-3xl font-bold text-[#0C831F]">Ritual by Blinkit</h1>
-      <p className="max-w-md text-gray-600">
-        Phase 0 scaffold is live. The Blinkit-replica home screen lands in
-        Phase 1.
-      </p>
+    <main>
+      <Header />
+      <CategoryTiles />
+      <ProductRail title="Hot deals" products={hotDeals} />
+      <ProductRail title="Your daily fresh needs" products={freshNeeds} />
+      <ProductRail title="Skincare essentials" products={skincare} />
     </main>
   );
 }
