@@ -1,6 +1,8 @@
 import Header from "@/components/Header";
 import ProductCard from "@/components/ProductCard";
+import RitualBanner from "@/components/RitualBanner";
 import { getByCategory, searchCatalog } from "@/lib/catalog";
+import { classifyQuery } from "@/lib/queryClassifier";
 
 interface SearchPageProps {
   searchParams: Promise<{ q?: string; category?: string; subcategory?: string }>;
@@ -10,6 +12,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   const { q, category, subcategory } = await searchParams;
 
   const results = q ? searchCatalog(q) : category ? getByCategory(category, subcategory) : [];
+  const intent = q ? classifyQuery(q) : null;
 
   const heading = q ? `Results for "${q}"` : category ? category.replace(/_/g, " ") : "Search";
 
@@ -17,6 +20,8 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
     <main>
       <Header />
       <div className="px-4 pt-4">
+        {intent && <RitualBanner intent={intent} />}
+
         <h1 className="mb-3 text-base font-bold capitalize text-gray-900">{heading}</h1>
 
         {results.length === 0 ? (
