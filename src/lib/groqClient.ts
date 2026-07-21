@@ -6,9 +6,16 @@ export interface GroqMessage {
   content: string;
 }
 
-export async function callGroq(messages: GroqMessage[]): Promise<string> {
+export interface CallGroqOptions {
+  jsonMode?: boolean;
+  maxTokens?: number;
+}
+
+export async function callGroq(messages: GroqMessage[], options: CallGroqOptions = {}): Promise<string> {
   const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) throw new Error("GROQ_API_KEY is not set");
+
+  const { jsonMode = true, maxTokens = 1000 } = options;
 
   const res = await fetch(GROQ_ENDPOINT, {
     method: "POST",
@@ -20,8 +27,8 @@ export async function callGroq(messages: GroqMessage[]): Promise<string> {
       model: MODEL,
       messages,
       temperature: 0.3,
-      max_tokens: 1000,
-      response_format: { type: "json_object" },
+      max_tokens: maxTokens,
+      ...(jsonMode ? { response_format: { type: "json_object" } } : {}),
     }),
   });
 

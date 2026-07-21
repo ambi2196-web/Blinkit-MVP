@@ -3,11 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
-import type { ComposedRoutine } from "@/lib/routineEngine";
+import type { ComposedRoutine, EvidenceEntry } from "@/lib/routineEngine";
+import EvidenceBottomSheet from "@/components/EvidenceBottomSheet";
 
 export default function RoutineCard({ routine }: { routine: ComposedRoutine }) {
   const { addToCart } = useCart();
-  const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [openEvidence, setOpenEvidence] = useState<EvidenceEntry | null>(null);
   const [addedAll, setAddedAll] = useState(false);
 
   const handleAddAll = () => {
@@ -40,33 +41,11 @@ export default function RoutineCard({ routine }: { routine: ComposedRoutine }) {
 
                 {item.evidence && (
                   <button
-                    onClick={() =>
-                      setExpandedId(expandedId === item.product.id ? null : item.product.id)
-                    }
+                    onClick={() => setOpenEvidence(item.evidence!)}
                     className="mt-1.5 rounded-full bg-blue-50 px-2 py-0.5 text-[11px] font-semibold text-blue-700"
                   >
                     🔬 {item.evidence.study_count > 0 ? `${item.evidence.study_count} studies` : "evidence"}
                   </button>
-                )}
-
-                {item.evidence && expandedId === item.product.id && (
-                  <div className="mt-2 rounded-lg bg-gray-50 p-2.5 text-xs text-gray-700">
-                    <p className="mb-1 font-semibold capitalize text-gray-800">
-                      {item.evidence.strength} evidence
-                    </p>
-                    <p className="mb-2">{item.evidence.plain_summary}</p>
-                    {item.evidence.sources.map((s, i) => (
-                      <a
-                        key={i}
-                        href={s.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block truncate text-[11px] text-blue-600 underline"
-                      >
-                        {s.title} — {s.journal} ({s.year})
-                      </a>
-                    ))}
-                  </div>
                 )}
               </div>
             </div>
@@ -97,6 +76,10 @@ export default function RoutineCard({ routine }: { routine: ComposedRoutine }) {
       <p className="mt-4 text-center text-[11px] text-gray-400">
         Ritual recommendations are never sponsored.
       </p>
+
+      {openEvidence && (
+        <EvidenceBottomSheet evidence={openEvidence} onClose={() => setOpenEvidence(null)} />
+      )}
     </div>
   );
 }

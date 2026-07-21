@@ -7,6 +7,7 @@ import { INTENT_QUESTIONS } from "@/lib/consultQuestions";
 import { composeRoutine, getRoutineIdForIntent, type ComposedRoutine } from "@/lib/routineEngine";
 import type { Intent } from "@/lib/queryClassifier";
 import RoutineCard from "@/components/RoutineCard";
+import FollowupChat from "@/components/FollowupChat";
 
 const VALID_INTENTS = Object.keys(INTENT_QUESTIONS) as Intent[];
 
@@ -128,6 +129,7 @@ export default function ConsultFlow() {
           </p>
         )}
         <RoutineCard routine={routine} />
+        <FollowupChat query={query} answers={answers} routine={routine} />
       </div>
     );
   }

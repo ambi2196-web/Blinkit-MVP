@@ -19,6 +19,15 @@ body {
   overflow: hidden;
 }
 
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
