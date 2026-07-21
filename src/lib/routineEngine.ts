@@ -136,3 +136,28 @@ export function getRoutineIdForIntent(intent: Intent, answers: string[]): string
       return null;
   }
 }
+
+export function buildComposedFromLLM(output: {
+  routine_title: string;
+  items: { sku_id: string; why: string; evidence_id: string | null }[];
+  skip_note: string | null;
+}): ComposedRoutine {
+  const items: RoutineItem[] = output.items
+    .map((i) => {
+      const product = catalog.find((p) => p.id === i.sku_id);
+      if (!product) return null;
+      const ev = i.evidence_id ? evidence.find((e) => e.id === i.evidence_id) : undefined;
+      return { step: "", product, why: i.why, evidence: ev } as RoutineItem;
+    })
+    .filter((i): i is RoutineItem => i !== null);
+
+  const totalPrice = items.reduce((sum, i) => sum + i.product.price, 0);
+
+  return {
+    title: output.routine_title,
+    reviewedBy: "AI-composed and validated against the catalog & evidence base",
+    items,
+    skipNote: output.skip_note,
+    totalPrice,
+  };
+}

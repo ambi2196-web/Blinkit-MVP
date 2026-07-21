@@ -20,7 +20,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
     <main>
       <Header />
       <div className="px-4 pt-4">
-        {intent && <RitualBanner intent={intent} />}
+        {intent && q && <RitualBanner intent={intent} query={q} />}
 
         <h1 className="mb-3 text-base font-bold capitalize text-gray-900">{heading}</h1>
 

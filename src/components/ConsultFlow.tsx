@@ -4,19 +4,40 @@ import { useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { INTENT_QUESTIONS } from "@/lib/consultQuestions";
-import { composeRoutine, getRoutineIdForIntent } from "@/lib/routineEngine";
+import { composeRoutine, getRoutineIdForIntent, type ComposedRoutine } from "@/lib/routineEngine";
 import type { Intent } from "@/lib/queryClassifier";
 import RoutineCard from "@/components/RoutineCard";
 
 const VALID_INTENTS = Object.keys(INTENT_QUESTIONS) as Intent[];
 
+const FALLBACK_QUERY_TEXT: Record<Intent, string> = {
+  dry_skin: "dry skin",
+  oily_acne: "acne",
+  high_protein: "high protein",
+  beard: "beard growth",
+  sleep: "sleep routine",
+};
+
+interface ConsultApiResponse {
+  routine?: ComposedRoutine;
+  source?: "llm" | "fallback";
+  blocked?: boolean;
+  rateLimited?: boolean;
+  message?: string;
+  error?: string;
+}
+
 export default function ConsultFlow() {
   const searchParams = useSearchParams();
   const intentParam = searchParams.get("intent");
   const intent = VALID_INTENTS.includes(intentParam as Intent) ? (intentParam as Intent) : null;
+  const query = searchParams.get("q") || (intent ? FALLBACK_QUERY_TEXT[intent] : "");
 
   const [answers, setAnswers] = useState<string[]>([]);
   const [building, setBuilding] = useState(false);
+  const [routine, setRoutine] = useState<ComposedRoutine | null>(null);
+  const [source, setSource] = useState<"llm" | "fallback" | null>(null);
+  const [blockedMessage, setBlockedMessage] = useState<string | null>(null);
 
   if (!intent) {
     return (
@@ -35,19 +56,59 @@ export default function ConsultFlow() {
   const step = answers.length;
   const isDone = step >= questions.length;
 
+  const buildRoutine = async (finalAnswers: string[]) => {
+    setBuilding(true);
+    try {
+      const res = await fetch("/api/consult", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query, answers: finalAnswers }),
+      });
+      const data: ConsultApiResponse = await res.json();
+
+      if (data.blocked || data.rateLimited) {
+        setBlockedMessage(data.message ?? "That's not something I can help with here.");
+        setBuilding(false);
+        return;
+      }
+
+      if (data.routine) {
+        setRoutine(data.routine);
+        setSource(data.source ?? "fallback");
+        setBuilding(false);
+        return;
+      }
+
+      throw new Error(data.error ?? "No routine returned");
+    } catch {
+      const routineId = getRoutineIdForIntent(intent, finalAnswers);
+      const fallbackRoutine = routineId ? composeRoutine(routineId) : null;
+      setRoutine(fallbackRoutine);
+      setSource("fallback");
+      setBuilding(false);
+    }
+  };
+
   const handleAnswer = (option: string) => {
     const next = [...answers, option];
     setAnswers(next);
     if (next.length >= questions.length) {
-      setBuilding(true);
-      setTimeout(() => setBuilding(false), 700);
+      buildRoutine(next);
     }
   };
 
-  if (isDone && !building) {
-    const routineId = getRoutineIdForIntent(intent, answers);
-    const routine = routineId ? composeRoutine(routineId) : null;
+  if (blockedMessage) {
+    return (
+      <div className="px-4 pt-6 text-center">
+        <p className="text-sm text-gray-600">{blockedMessage}</p>
+        <Link href="/" className="mt-3 inline-block text-sm font-semibold text-[#0C831F]">
+          ← Back home
+        </Link>
+      </div>
+    );
+  }
 
+  if (isDone && !building) {
     if (!routine) {
       return (
         <div className="px-4 pt-6 text-center">
@@ -61,6 +122,11 @@ export default function ConsultFlow() {
 
     return (
       <div className="px-4 pt-4 pb-6">
+        {source === "fallback" && (
+          <p className="mb-2 text-center text-[11px] text-gray-400">
+            Showing our evidence-checked baseline routine for this combination.
+          </p>
+        )}
         <RoutineCard routine={routine} />
       </div>
     );
