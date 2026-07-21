@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import BottomCartBar from "@/components/BottomCartBar";
+import ConceptDisclaimerModal from "@/components/ConceptDisclaimerModal";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
           <div className="mx-auto max-w-md">
             <BottomCartBar />
           </div>
+          <ConceptDisclaimerModal />
         </CartProvider>
       </body>
     </html>

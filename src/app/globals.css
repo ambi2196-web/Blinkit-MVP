@@ -28,6 +28,17 @@ body {
   }
 }
 
+@keyframes confettiFall {
+  from {
+    top: -10px;
+    opacity: 1;
+  }
+  to {
+    top: 100vh;
+    opacity: 0.4;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

@@ -4,10 +4,12 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { getProduct } from "@/lib/catalog";
 
 const STORAGE_KEY = "ritual-blinkit-cart";
+const ROUTINE_STORAGE_KEY = "ritual-blinkit-cart-routine-ids";
 
 interface CartContextValue {
   quantities: Record<string, number>;
-  addToCart: (id: string) => void;
+  routineIds: string[];
+  addToCart: (id: string, fromRoutine?: boolean) => void;
   removeFromCart: (id: string) => void;
   setQty: (id: string, qty: number) => void;
   totalItems: number;
@@ -18,12 +20,15 @@ const CartContext = createContext<CartContextValue | null>(null);
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [quantities, setQuantities] = useState<Record<string, number>>({});
+  const [routineIds, setRoutineIds] = useState<string[]>([]);
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
     try {
       const stored = window.localStorage.getItem(STORAGE_KEY);
       if (stored) setQuantities(JSON.parse(stored));
+      const storedRoutine = window.localStorage.getItem(ROUTINE_STORAGE_KEY);
+      if (storedRoutine) setRoutineIds(JSON.parse(storedRoutine));
     } catch {
       // ignore corrupt storage
     }
@@ -35,8 +40,17 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(quantities));
   }, [quantities, hydrated]);
 
-  const addToCart = (id: string) =>
+  useEffect(() => {
+    if (!hydrated) return;
+    window.localStorage.setItem(ROUTINE_STORAGE_KEY, JSON.stringify(routineIds));
+  }, [routineIds, hydrated]);
+
+  const addToCart = (id: string, fromRoutine = false) => {
     setQuantities((prev) => ({ ...prev, [id]: (prev[id] ?? 0) + 1 }));
+    if (fromRoutine) {
+      setRoutineIds((prev) => (prev.includes(id) ? prev : [...prev, id]));
+    }
+  };
 
   const removeFromCart = (id: string) =>
     setQuantities((prev) => {
@@ -68,7 +82,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <CartContext.Provider
-      value={{ quantities, addToCart, removeFromCart, setQty, totalItems, totalPrice }}
+      value={{ quantities, routineIds, addToCart, removeFromCart, setQty, totalItems, totalPrice }}
     >
       {children}
     </CartContext.Provider>

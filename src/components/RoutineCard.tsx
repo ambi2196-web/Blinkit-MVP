@@ -12,7 +12,7 @@ export default function RoutineCard({ routine }: { routine: ComposedRoutine }) {
   const [addedAll, setAddedAll] = useState(false);
 
   const handleAddAll = () => {
-    routine.items.forEach((item) => addToCart(item.product.id));
+    routine.items.forEach((item) => addToCart(item.product.id, true));
     setAddedAll(true);
   };
 

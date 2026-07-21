@@ -1,11 +1,14 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import { getProduct } from "@/lib/catalog";
+import CheckoutModal from "@/components/CheckoutModal";
 
 export default function CartPage() {
-  const { quantities, addToCart, removeFromCart, totalItems, totalPrice } = useCart();
+  const { quantities, routineIds, addToCart, removeFromCart, totalItems, totalPrice } = useCart();
+  const [showCheckout, setShowCheckout] = useState(false);
   const entries = Object.entries(quantities)
     .map(([id, qty]) => ({ product: getProduct(id), qty }))
     .filter((e) => e.product);
@@ -36,7 +39,14 @@ export default function CartPage() {
                   📦
                 </div>
                 <div className="flex-1">
-                  <p className="text-xs font-medium text-gray-800">{product!.name}</p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs font-medium text-gray-800">{product!.name}</p>
+                    {routineIds.includes(product!.id) && (
+                      <span className="rounded-full bg-green-50 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-[#0C831F]">
+                        Routine
+                      </span>
+                    )}
+                  </div>
                   <p className="text-[11px] text-gray-500">{product!.size}</p>
                   <p className="text-sm font-semibold text-gray-900">₹{product!.price * qty}</p>
                 </div>
@@ -62,7 +72,7 @@ export default function CartPage() {
 
           <button
             className="mt-4 w-full rounded-lg bg-[#0C831F] py-3 text-sm font-bold text-white"
-            onClick={() => alert("This is a concept prototype — checkout isn't wired up yet.")}
+            onClick={() => setShowCheckout(true)}
           >
             Proceed to Checkout — ₹{totalPrice}
           </button>
@@ -72,6 +82,8 @@ export default function CartPage() {
           </p>
         </>
       )}
+
+      {showCheckout && <CheckoutModal onClose={() => setShowCheckout(false)} />}
     </main>
   );
 }
