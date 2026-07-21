@@ -1,3 +1,5 @@
+import { fuzzyPhraseMatch } from "@/lib/fuzzyMatch";
+
 export type Intent = "dry_skin" | "oily_acne" | "high_protein" | "beard" | "sleep";
 
 const INTENT_KEYWORDS: Record<Intent, string[]> = {
@@ -20,7 +22,7 @@ export function classifyQuery(query: string): Intent | null {
   const q = query.trim().toLowerCase();
   if (!q) return null;
   for (const [intent, keywords] of Object.entries(INTENT_KEYWORDS) as [Intent, string[]][]) {
-    if (keywords.some((k) => q.includes(k))) return intent;
+    if (keywords.some((k) => fuzzyPhraseMatch(q, k))) return intent;
   }
   return null;
 }

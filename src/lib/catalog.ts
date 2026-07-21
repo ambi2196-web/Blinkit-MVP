@@ -1,5 +1,6 @@
 import rawCatalog from "@/data/catalog.json";
 import type { CategoryTile, Product } from "@/lib/types";
+import { tokenize, fuzzyTokenMatch } from "@/lib/fuzzyMatch";
 
 export const catalog = rawCatalog as Product[];
 
@@ -8,15 +9,14 @@ export function getProduct(id: string): Product | undefined {
 }
 
 export function searchCatalog(query: string): Product[] {
-  const q = query.trim().toLowerCase();
-  if (!q) return [];
-  return catalog.filter(
-    (p) =>
-      p.name.toLowerCase().includes(q) ||
-      p.brand.toLowerCase().includes(q) ||
-      p.subcategory.replace(/_/g, " ").includes(q) ||
-      p.tags.some((t) => t.replace(/_/g, " ").includes(q))
-  );
+  const queryTokens = tokenize(query);
+  if (queryTokens.length === 0) return [];
+
+  return catalog.filter((p) => {
+    const targetText = [p.name, p.brand, p.subcategory, ...p.tags].join(" ").replace(/_/g, " ");
+    const targetTokens = tokenize(targetText);
+    return queryTokens.every((qt) => targetTokens.some((tt) => fuzzyTokenMatch(qt, tt)));
+  });
 }
 
 export function getByCategory(category: string, subcategory?: string): Product[] {
