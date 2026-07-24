@@ -16,6 +16,11 @@ export const INTENT_QUESTIONS: Record<Intent, ConsultQuestion[]> = {
     { question: "Current routine?", options: ["Nothing", "Just face wash", "Full routine"] },
     { question: "Budget for the full routine?", options: ["Under ₹500", "₹500–1200", "No limit"] },
   ],
+  skin_general: [
+    { question: "What's your skin like most days?", options: ["Dry", "Oily", "Combo", "Sensitive"] },
+    { question: "Current routine?", options: ["Nothing", "Just face wash", "Full routine"] },
+    { question: "Budget for the full routine?", options: ["Under ₹500", "₹500–1200", "No limit"] },
+  ],
   high_protein: [
     { question: "Diet preference?", options: ["Vegetarian", "Eggetarian", "Non-vegetarian"] },
     { question: "Main goal?", options: ["Muscle gain", "General fitness", "Weight management"] },

@@ -14,6 +14,7 @@ const VALID_INTENTS = Object.keys(INTENT_QUESTIONS) as Intent[];
 const FALLBACK_QUERY_TEXT: Record<Intent, string> = {
   dry_skin: "dry skin",
   oily_acne: "acne",
+  skin_general: "skin routine",
   high_protein: "high protein",
   beard: "beard growth",
   sleep: "sleep routine",

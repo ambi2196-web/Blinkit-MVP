@@ -122,6 +122,14 @@ export function getRoutineIdForIntent(intent: Intent, answers: string[]): string
       return "routine-dry-skin-starter";
     case "oily_acne":
       return "routine-oily-acne-basic";
+    case "skin_general": {
+      // The consult's own first question (skin type) resolves the
+      // ambiguity a generic "skin routine" search query left open.
+      const skinType = answers[0]?.toLowerCase() ?? "";
+      return skinType.includes("dry") || skinType.includes("sensitive")
+        ? "routine-dry-skin-starter"
+        : "routine-oily-acne-basic";
+    }
     case "high_protein": {
       const diet = answers[0]?.toLowerCase() ?? "";
       return diet.includes("veg") && !diet.includes("non") && !diet.includes("egg")
