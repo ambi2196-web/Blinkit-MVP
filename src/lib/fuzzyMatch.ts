@@ -57,3 +57,19 @@ export function fuzzyPhraseMatch(query: string, phrase: string): boolean {
   if (phraseTokens.length === 0 || queryTokens.length === 0) return false;
   return phraseTokens.every((pt) => queryTokens.some((qt) => fuzzyTokenMatch(qt, pt)));
 }
+
+// Natural-language filler words a user types around their real intent
+// ("dry skin ROUTINE", "high protein DIET") that don't correspond to
+// anything in the catalog. Requiring every query word to match a product
+// meant these silently zeroed out otherwise-good searches.
+const STOPWORDS = new Set([
+  "routine", "routines", "diet", "plan", "daily", "good", "for", "the", "a",
+  "an", "my", "me", "need", "needs", "want", "wants", "please", "help",
+  "some", "any", "products", "product", "of", "to", "with",
+]);
+
+/** Drops stopwords, but never returns an empty list (falls back to the originals). */
+export function filterStopwords(tokens: string[]): string[] {
+  const filtered = tokens.filter((t) => !STOPWORDS.has(t));
+  return filtered.length > 0 ? filtered : tokens;
+}
